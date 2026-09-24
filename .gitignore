@@ -1,0 +1,8 @@
+.env
+.env.*
+*.log
+*.sql
+/vendor/
+/.local/
+
+graphify-out/
