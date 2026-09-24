@@ -47,6 +47,12 @@ an arbitrary account.
 Run `php -n tests/security_test.php` and lint PHP files. The tests use synthetic
 values and a recording database boundary; they do not contact a real database.
 Local HTTP route tests cover methods, authorization, CSRF, redirects and escaping.
-A real MySQL integration run, account rate limiting, recovery/MFA, deployment TLS,
-DB backups and operational monitoring remain necessary before public deployment.
-No live database, schema, user account or server was changed by this patch.
+A local Linux run with PHP 8.3.6 and MySQL 8.0.46 additionally passed 32 HTTP
+checks against a real disposable database, covering account login, authorization,
+CSRF, bound SQL, utf8mb4, escaping, pagination and persistent mutations. The
+repeatable test is maintained as an explicit PHP block in the
+[PBLang edition](https://github.com/PanosBiazis/crud-website-pblang#repeatable-real-mysql-test-optional-linuxphp-boundary).
+It uses generated schemas/users and synthetic data; no existing application
+database was used. Account rate limiting, recovery/MFA, deployment TLS, DB backups
+and operational monitoring remain necessary before public deployment. Windows
+and macOS have not been verified by this integration run.
